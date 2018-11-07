@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+</head>
+<body>
+<label>user</label>
+<input type="text" name="name" id="userName" value="">
+<br>
+<label>password</label>
+<input type="password" name="password" id="password">
+<br>
+<button type="submit" id="login">signIn</button>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var userName = $('#userName');
+		var password = $('#password');
+		var login = $('#login');
+
+		login.click(function(){
+			$.ajax({
+				type:'POST',
+				dataType:'json',
+				async:false, 
+				url:'login.php',
+				data: {
+					userName:userName.val(),
+				},
+				success:function(data){
+					alert(data);
+					console.log('okDone')
+				},
+				error:function(){
+					alert('error!');
+				}
+			})
+		});
+	})
+</script>
+</body>
+</html>
